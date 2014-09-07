@@ -1,8 +1,9 @@
 body {margin : 0; padding: 0;}
 
-#sidhuvud{background: #cc99cc; padding: 10px ;}
+#sidhuvud{background: url(bakgrund.jpeg) repeat-x; padding: 10px ; }
+#sidfot{background: url(bakgrund.jpeg) repeat-x; padding: 10px; height: 20px; float:bottom;}
 
-#textcontainer{background: #ffffff; float:left; width: 90%; padding: 10px;}
+#textcontainer{background: #ffffff; float:left; width: 95%; padding: 10px; height: 75%;}
 
 p { font-family: sans-serif; font-size: 12 pt; }
 
