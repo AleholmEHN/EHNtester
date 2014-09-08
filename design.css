@@ -6,7 +6,7 @@ body {margin : 0; padding: 0;}
 #sidhuvud{background: url(bakgrund.jpeg) no-repeat  ; border: 1px solid #000000; height: 25%}
 
 #textcontainer{background: #ffffff; width: 97%; padding: 2px 3px 2px 5px; height: 100%;
-    border: 5px solid #0000ff; overflow: scroll;}
+    border: 5px solid #0000ff; overflow: scroll;overflow-y: scroll}
 
 p { font-family: sans-serif; font-size: 12 pt; }
 
