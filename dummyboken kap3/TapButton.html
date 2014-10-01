@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+    function Tapped()
+    {
+        alert("I just got tapped");
+    }
+        
+    function Remover()
+    {
+        var tapper = document.getElementById("tapButton");
+        tapper.removeEventListener("click", Tapped, false);
+        tapper.style.background='black';
+        tapper.style.color='white';
+        alert("Tap Man is broken");
+    }
+        
+    function setUp()
+    {
+        var tapper=document.getElementById("tapButton");
+        tapper.addEventListener("click", Tapped, false);
+        var killer=document.getElementById("spoiler");
+        killer.addEventListener("click", Remover, false);
+    }
+    
+    </script>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <title>Tap button</title>
+    </head>
+
+    <body onload="setUp()">
+        <button id="tapButton">Tap Man</button>
+        <button id="spoiler">Killer</button>
+    </body>
+
+</html>
