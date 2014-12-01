@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8" />
+        <title>Animering s. 179</title>
+       
+    </head>
+    
+    <body>
+        <canvas id="minCanvas" width="200" height="200" ></canvas>
+       
+        <script src="http://spelprogrammering.nu/advanced.js"></script>
+        <script src="animering.js"></script>
+    </body>
+
+
+</html>
