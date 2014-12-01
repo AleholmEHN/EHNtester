@@ -104,9 +104,10 @@ rityta.update = function()
     with(rityta)
     {
         if (mouse.left)
+        {
             circle(mouse.x, mouse.y, 20, "red");
-        if (mouse.right)
-            circle(mouse.x, mouse.y, 20, "blue");
+            alert("x och y " + mouse.x + " " + mouse.y);
+        }
     }
 }
 
