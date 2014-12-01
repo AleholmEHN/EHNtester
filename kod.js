@@ -105,7 +105,9 @@ rityta.update = function()
     {
         if (mouse.left)
         {
+            clearScreen();
             circle(mouse.x, mouse.y, 20, "red");
+            text(10, 10, 10, mouse.x + " " + mouse.y , "black");
          }
     }
 }
