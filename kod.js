@@ -106,8 +106,7 @@ rityta.update = function()
         if (mouse.left)
         {
             circle(mouse.x, mouse.y, 20, "red");
-            alert("x och y " + mouse.x + " " + mouse.y);
-        }
+         }
     }
 }
 
