@@ -1,27 +1,140 @@
 
 
-/*function Tomte()
+function Tomte()
 {
     
 //    this.x = random(rityta.totalWidth-50) +50;
 //    this.y = random(rityta.totalHeight-50) +50;
-    this.x = random(500);
-    this.y = random(400);
+    this.x = 250;
+    this.y = 250;
  //   alert("x och y " + this.x +" " + this.y);
     this.dead = false;
     this.nbrUpdates = 0;
     
+    
     this.update = function()
     {
         this.nbrUpdates++;
-        rityta.save();
-        rityta.translate(this.x, this.y);
-        rityta.circle(0,0,20,"red");
-        rityta.restore();
+        with(rityta)
+        {
+            save();
+            translate(this.x, this.y);
+            circle(0,0,20,"red");
+            restore();
+        }
     };
 }
     
+var rityta = new RoboroCanvas("minCanvas");
+
+function start()
+{
    
+    minTomte = [];
+    minTomte[0] = new Tomte();
+    var tomteKilled = 0;
+    var loop = 0;
+    minTomte[0].update();
+    
+
+    rityta.update = function()
+    {
+       rityta.fill("black");
+        for (var i = 0; i < minTomte.length; i++)
+        {
+            var tempTomte = minTomte[i];
+            if (!tempTomte.dead)
+            {
+                tempTomte.update();
+                with(rityta)
+                {
+
+                    if (rityta.mouse.left && (distance(rityta.mouse, tempTomte) < 20))
+                    {
+                        tomteKilled++;
+                        tempTomte.dead = true;
+
+                    }
+                }
+                if (tempTomte.nbrUpdates > 100)
+                {
+                    tempTomte.dead = true;  // Dölj igen
+                    tomteKilled--;
+                }
+            }
+        }
+        loop++;
+        if (loop % 20 == 0)
+        {
+            minTomte.push(new Tomte());
+        }
+        if (tomteKilled > 20)
+        {
+            rityta.text(100, rityta.totalHeight/2, 20, "Du vann", "green");
+            rityta.stopUpdate();
+        }
+        if (tomteKilled < -10)
+        {
+            rityta.text(100, rityta.totalHeight/2, 20, "Looser", "red");
+            rityta.stopUpdate();
+        }
+        rityta.text(100,100,20, "Tomtar killed " + tomteKilled, "white");
+    };
+    
+    
+}
+
+    
+/*    rityta.update = function()
+    {
+        rityta.fill("black");
+        for (var i = 0; i < minTomte.length; i++)
+        {
+            var tempTomte = minTomte[i];
+            if (!tempTomte.dead)
+            {
+ //               tempTomte.update();
+                with(rityta)
+                {
+                    if (mouse.left)
+                    {
+                        if (mouse.x >= 0 && mouse.y >= 0)
+                        {
+                            alert("X och Y: " + mouse.x + " " +mouse.y);
+//                if (rityta.mouse.left && (distance(rityta.mouse, tempTomte) < 20))
+//                {
+                        tomteKilled++;
+                        tempTomte.dead = true;
+                        }
+                    }
+                }
+                if (tempTomte.nbrUpdates > 100)
+                {
+                    tempTomte.dead = true;  // Dölj igen
+                    tomteKilled--;
+                }
+            }
+        }
+        loop++;
+        if (loop % 20 == 0)
+        {
+            minTomte.push(new Tomte());
+        }
+        if (tomteKilled > 20)
+        {
+            rityta.text(100, rityta.totalHeight/2, 20, "Du vann", "green");
+            rityta.stopUpdate();
+        }
+        if (tomteKilled < -10)
+        {
+            rityta.text(100, rityta.totalHeight/2, 20, "Looser", "red");
+            rityta.stopUpdate();
+        }
+        rityta.text(100,100,20, "Tomtar killed " + tomteKilled, "white");
+    };*/
+//}
+
+/*   
 function start()
 {
    rityta = new RoboroCanvas("canvas1");
@@ -79,36 +192,54 @@ function start()
 }
  */
 
- var rityta = new RoboroCanvas("minCanvas");
-  var ball= {x:10, y:10, xSpeed: 1, ySpeed:1};
   
-/*  rityta.update = function()
-  {
-      rityta.clearScreen();
-    rityta.circle(ball.x, ball.y, 50, "red");
- //   ball.x++;
- //   ball.y++;
-    ball.x += ball.xSpeed;
-    ball.y += ball.ySpeed;
-     if (ball.x > rityta.totalWidth || ball.x < 0)
-        ball.xSpeed *= -1;
-    else if (ball.y > rityta.totalHeight || ball.y < 0)
-        ball.ySpeed *= -1;
-  }
-  
-*/
+/*    minTomte = [];
+    minTomte[0] = new Tomte(rityta);
+    tomteKilled = 0;
+    loop = 0;
+    minTomte[0].update();*/
 
-
-rityta.update = function()
-{
-    with(rityta)
+/*    rityta.update = function()
     {
-        if (mouse.left)
+        rityta.fill("black");
+/*        for (var i = 0; i < minTomte.length; i++)
         {
-            clearScreen();
-            circle(mouse.x, mouse.y, 20, "red");
-            text(10, 10, 10, mouse.x + " " + mouse.y , "black");
-         }
-    }
-}
+            var tempTomte = minTomte[i];
+            if (!tempTomte.dead)
+            {
+                tempTomte.update();
+                if (rityta.mouse.left)
+                {
+                    alert("mouse x y: " + rityta.mouse.x + " " + rityta.mouse.y + " tomte x y: " +tempTomte.x + " " + tempTomte.y);
+
+//                if (rityta.mouse.left && (distance(rityta.mouse, tempTomte) < 20))
+//                {
+                    tomteKilled++;
+                    tempTomte.dead = true;
+                }
+                if (tempTomte.nbrUpdates > 100)
+                {
+                    tempTomte.dead = true;  // Dölj igen
+                    tomteKilled--;
+                }
+            }
+        }
+        loop++;
+        if (loop % 20 == 0)
+        {
+            minTomte.push(new Tomte());
+        }
+        if (tomteKilled > 20)
+        {
+            rityta.text(100, rityta.totalHeight/2, 20, "Du vann", "green");
+            rityta.stopUpdate();
+        }
+        if (tomteKilled < -10)
+        {
+            rityta.text(100, rityta.totalHeight/2, 20, "Looser", "red");
+            rityta.stopUpdate();
+        }
+        rityta.text(100,100,20, "Tomtar killed " + tomteKilled, "white");
+    }*/
+
 
