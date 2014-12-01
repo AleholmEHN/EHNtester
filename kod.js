@@ -24,7 +24,18 @@ function Tomte()
         {
             save();
             translate(this.x, this.y);
-            circle(0,0,20,"red");
+            circle(0, -5, 25, "red");
+            circle(0, -10, 20, "red");
+            circle(0, -15, 20, "red");
+            circle(0, -25, 15, "red");
+            circle(0, -35, 10, "red");
+            circle(0, -45, 10, "white");
+            circle(0, 10, 25, "white");
+            circle(0,0,20,"pink");
+            circle(-6, -5, 4, "black");
+            circle(6, -5, 4, "black");
+            rotate(180);
+            arc(0,-10, 5, 180, 2,  "black");
             restore();
         }
     };
