@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="sv">
+<head>
+    <meta charset="utf-8"/>
+    <title>TomteSpel</title>
+    <link rel="stylesheet" type="text/css" href="mycss.css" />
+    </head>
+    
+    <body onload="start()">
+        
+        <canvas id="canvas1" width="500" height="400"></canvas>
+    
+        <script src="http://spelprogrammering.nu/advanced.js"></script>
+        <script src="http://spelprogrammering.nu/simple.js"></script>
+        <script src="kod.js"></script>
+    </body>
+    
+    </head>
+
+</html>

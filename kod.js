@@ -75,7 +75,7 @@ function start()
             rityta.stopUpdate();
         }
         rityta.text(100,100,20, "Tomtar killed " + tomteKilled, "white");
-    }
+    };
 }
  
 
