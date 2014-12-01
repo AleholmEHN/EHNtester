@@ -1,7 +1,7 @@
   var rityta = new RoboroCanvas("minCanvas");
   var ball= {x:10, y:10, xSpeed: 1, ySpeed:1};
   
-  rityta.update = function()
+/*  rityta.update = function()
   {
       rityta.clearScreen();
     rityta.circle(ball.x, ball.y, 50, "red");
@@ -15,3 +15,16 @@
         ball.ySpeed *= -1;
   }
   
+*/
+
+
+rityta.update = function()
+{
+    with(rityta)
+    {
+        if (mouse.left)
+            circle(mouse.x, mouse.y, 20, "red");
+        if (mouse.right)
+            circle(mouse.x, mouse.y, 20, "blue");
+    }
+}
