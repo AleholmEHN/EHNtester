@@ -5,8 +5,8 @@ function Tomte()
     
 //    this.x = random(rityta.totalWidth-50) +50;
 //    this.y = random(rityta.totalHeight-50) +50;
-    this.x = 250;
-    this.y = 250;
+    this.x = Math.random()*400;
+    this.y = Math.random()*500;
  //   alert("x och y " + this.x +" " + this.y);
     this.dead = false;
     this.nbrUpdates = 0;
@@ -39,46 +39,49 @@ function start()
 
     rityta.update = function()
     {
-       rityta.fill("black");
-        for (var i = 0; i < minTomte.length; i++)
+        with(rityta)
         {
-            var tempTomte = minTomte[i];
-            if (!tempTomte.dead)
+            fill("black");
+            for (var i = 0; i < minTomte.length; i++)
             {
-                tempTomte.update();
-                with(rityta)
+                var tempTomte = minTomte[i];
+                if (!tempTomte.dead)
                 {
-
-                    if (rityta.mouse.left && (distance(rityta.mouse, tempTomte) < 20))
+                    tempTomte.update();
+                    with(rityta)
                     {
-                        tomteKilled++;
-                        tempTomte.dead = true;
 
+                        if (mouse.left && (distance(mouse, tempTomte) < 20))
+                        {
+                            tomteKilled++;
+                            tempTomte.dead = true;
+
+                        }
+                    }
+                    if (tempTomte.nbrUpdates > 100)
+                    {
+                        tempTomte.dead = true;  // Dölj igen
+                        tomteKilled--;
                     }
                 }
-                if (tempTomte.nbrUpdates > 100)
-                {
-                    tempTomte.dead = true;  // Dölj igen
-                    tomteKilled--;
-                }
             }
+            loop++;
+            if (loop % 20 == 0)
+            {
+                minTomte.push(new Tomte());
+            }
+            if (tomteKilled > 20)
+            {
+                text(100, 200, 20, "Du vann", "green");
+                stopUpdate();
+            }
+            if (tomteKilled < -10)
+            {
+                text(100, 200, 20, "Looser", "red");
+                stopUpdate();
+            }
+            text(100,100,20, "Tomtar killed " + tomteKilled, "white");
         }
-        loop++;
-        if (loop % 20 == 0)
-        {
-            minTomte.push(new Tomte());
-        }
-        if (tomteKilled > 20)
-        {
-            rityta.text(100, rityta.totalHeight/2, 20, "Du vann", "green");
-            rityta.stopUpdate();
-        }
-        if (tomteKilled < -10)
-        {
-            rityta.text(100, rityta.totalHeight/2, 20, "Looser", "red");
-            rityta.stopUpdate();
-        }
-        rityta.text(100,100,20, "Tomtar killed " + tomteKilled, "white");
     };
     
     
