@@ -1,3 +1,8 @@
+var h = 0;
+var v = 0;
+
+var minW = 1280;
+var minH = 800;
 
 
 function Tomte()
@@ -5,8 +10,8 @@ function Tomte()
     
 //    this.x = random(rityta.totalWidth-50) +50;
 //    this.y = random(rityta.totalHeight-50) +50;
-    this.x = Math.random()*400;
-    this.y = Math.random()*500;
+    this.x = Math.random()*minW;
+    this.y = Math.random()*minH;
  //   alert("x och y " + this.x +" " + this.y);
     this.dead = false;
     this.nbrUpdates = 0;
@@ -29,7 +34,17 @@ var rityta = new RoboroCanvas("minCanvas");
 
 function start()
 {
-   
+//    rityta.width = window.innerWidth;
+//    rityta.height = window.innerHeight;
+
+    canv = document.getElementById('minCanvas');
+    win = document.getElementById('wrapper');
+    canv.height = minH;
+    canv.width = minW;
+//    $('#minCanvas').css("height", $(window).height() + "px");
+//    $('#minCanvas').css("width", $(window).width() + "px");
+    rityta = new RoboroCanvas("minCanvas");
+    
     minTomte = [];
     minTomte[0] = new Tomte();
     var tomteKilled = 0;
@@ -80,7 +95,7 @@ function start()
                 text(100, 200, 20, "Looser", "red");
                 stopUpdate();
             }
-            text(100,100,20, "Tomtar killed " + tomteKilled, "white");
+            text(50,50,20, "Tomtar killed " + tomteKilled, "white");
         }
     };
     

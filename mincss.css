@@ -1,0 +1,24 @@
+* { margin:0; padding:0; } /* to remove the top and left whitespace */
+
+html, body { width:100%; height:100%;
+
+//border-style: solid;
+//    border-color: #0000ff;
+
+} /* just to be sure these are full screen*/
+
+#minCanvas { display:block;
+//border-style: solid;
+//    border-color: #ff00ff;
+
+    
+}
+
+#wrapper
+{
+    width: 100%;
+    height: 100%;
+//    border-color: #00ff00;
+//    border-width: 5px;
+//    border-style: dashed;
+}
